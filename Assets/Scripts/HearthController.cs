@@ -6,21 +6,29 @@ using UnityEngine.UI;
 
 public class HearthController : MonoBehaviour
 {
-	public float speed;
+	private float speed = 15.0f;
 	private Rigidbody2D rb;
 	private Vector2 force;
-	[HideInInspector]
-	public float blood;
-	[HideInInspector]
-	public float maxBlood = 10f;
+	private float blood;
+	private float maxBlood = 10.0f;
 	private float timer = 0.0f;
 	private bool gameOver = false;
 	public GameObject gameOverUI;
 	public GameObject timeCounterUI;
 	public Slider slider;
+	private State state;
+
+	private enum State
+    {
+		PAUSE,
+		WALKING,
+		RUNNING
+    }
 
 	private void Start()
 	{
+		state = State.PAUSE;
+		maxBlood = 10.0f;
 		rb = GetComponent<Rigidbody2D>();
 		slider.maxValue = maxBlood;
 		slider.value = blood;
@@ -38,8 +46,25 @@ public class HearthController : MonoBehaviour
 
     private void Update()
     {
-        if (!gameOver)
-        {
+		if (!gameOver)
+		{
+			if (!(Input.GetKeyDown(KeyCode.LeftShift)) && 
+			     (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) 
+			   || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D)))
+			{
+				state = State.WALKING;
+			}
+
+			if (Input.GetKeyDown(KeyCode.LeftShift))
+			{
+				speed = 25.0f;
+				state = State.RUNNING;
+			}
+			if(Input.GetKeyUp(KeyCode.LeftShift))
+			{
+				speed = 15.0f;
+				state = State.WALKING;
+			}
 			DrainBlood();
 		}
     }
@@ -48,7 +73,18 @@ public class HearthController : MonoBehaviour
     {
 		if (blood > 0)
 		{
-			timer -= Time.deltaTime;
+			if(state == State.PAUSE)
+            {
+				timer -= Time.deltaTime * 0;
+			}
+			else if(state == State.WALKING)
+            {
+				timer -= Time.deltaTime;
+			}
+			else if(state == State.RUNNING)
+            {
+				timer -= Time.deltaTime * 2.5f;
+			}
 			blood = timer % 60;
 			slider.value = blood;
 		}
