@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class HearthController : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class HearthController : MonoBehaviour
 	[HideInInspector]
 	public float maxBlood = 15f;
 	private float timer = 0.0f;
+	public TMP_Text timeCounterText;
 
 	private void Start()
 	{
@@ -35,7 +37,7 @@ public class HearthController : MonoBehaviour
 		{
 			timer -= Time.deltaTime;
 			blood = timer % 60;
-			Debug.Log((int)blood);
+			timeCounterText.SetText("" + (int)blood);
 		}
 	}
 

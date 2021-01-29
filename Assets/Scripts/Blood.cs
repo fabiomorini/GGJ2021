@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Blood : MonoBehaviour
 {
-    public GameObject Player;
+    private GameObject Player;
     bool isTouching = false;
+    bool alreadyUsed = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,14 +16,32 @@ public class Blood : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            isTouching = false;
+        }
+    }
+
+    private void Start()
+    {
+        Player = GameObject.FindWithTag("Player");
+    }
+
     private void Update()
     {
-        if (isTouching)
+        if (Input.GetKeyDown(KeyCode.E) && isTouching && !alreadyUsed)
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                Player.GetComponent<HearthController>().SetBlood();
-            }
+            StartCoroutine(UseBlood());
         }
+    }
+
+    private IEnumerator UseBlood()
+    {
+        alreadyUsed = true;
+        yield return new WaitForSeconds(0.01f);
+        Player.GetComponent<HearthController>().SetBlood();
+        gameObject.SetActive(false); // que cambie el sprite
     }
 }
