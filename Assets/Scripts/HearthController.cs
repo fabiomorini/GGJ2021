@@ -12,7 +12,9 @@ public class HearthController : MonoBehaviour
 	[HideInInspector]
 	public float maxBlood = 15f;
 	private float timer = 0.0f;
-	public TMP_Text timeCounterText;
+	private bool gameOver = false;
+	public GameObject gameOverUI;
+	public GameObject timeCounterUI;
 
 	private void Start()
 	{
@@ -22,13 +24,19 @@ public class HearthController : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		force = new Vector2(Input.GetAxisRaw("Horizontal") * speed, Input.GetAxisRaw("Vertical") * speed).normalized;
-		rb.MovePosition(rb.position + force * speed * Time.fixedDeltaTime);
+		if (!gameOver)
+		{
+			force = new Vector2(Input.GetAxisRaw("Horizontal") * speed, Input.GetAxisRaw("Vertical") * speed).normalized;
+			rb.MovePosition(rb.position + force * speed * Time.fixedDeltaTime);
+		}
 	}
 
     private void Update()
     {
-		DrainBlood();
+        if (!gameOver)
+        {
+			DrainBlood();
+		}
     }
 
 	private void DrainBlood()
@@ -37,9 +45,24 @@ public class HearthController : MonoBehaviour
 		{
 			timer -= Time.deltaTime;
 			blood = timer % 60;
-			timeCounterText.SetText("" + (int)blood);
 		}
+		else
+        {
+			GameOver();
+        }
 	}
+
+	private void GameOver()
+    {
+		gameOver = true;
+		gameOverUI.SetActive(true);
+		timeCounterUI.SetActive(false);
+	}
+
+	public void ReloadGame()
+    {
+
+    }
 
 	public void SetBlood()
     {
