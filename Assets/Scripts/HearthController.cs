@@ -2,23 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class HearthController : MonoBehaviour
 {
 	public float speed;
 	private Rigidbody2D rb;
 	private Vector2 force;
+	[HideInInspector]
 	public float blood;
 	[HideInInspector]
-	public float maxBlood = 15f;
+	public float maxBlood = 10f;
 	private float timer = 0.0f;
 	private bool gameOver = false;
 	public GameObject gameOverUI;
 	public GameObject timeCounterUI;
+	public Slider slider;
 
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
+		slider.maxValue = maxBlood;
+		slider.value = blood;
 		SetBlood();
 	}
 
@@ -45,6 +50,7 @@ public class HearthController : MonoBehaviour
 		{
 			timer -= Time.deltaTime;
 			blood = timer % 60;
+			slider.value = blood;
 		}
 		else
         {
