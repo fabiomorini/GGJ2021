@@ -63,10 +63,10 @@ public class CanelitaIA : MonoBehaviour
         difference = currentPointToGo.transform.position - transform.position;
         targetPosition = currentPointToGo.transform.position;
         targetPosition.z = 0;
-        upCone.SetActive(false);
-        bottomCone.SetActive(false);
-        leftCone.SetActive(false);
-        rightCone.SetActive(false);
+        upCone.SetActive(true);
+        bottomCone.SetActive(true);
+        leftCone.SetActive(true);
+        rightCone.SetActive(true);
         visualCones.SetActive(true);
         isMoving = true;
     }
