@@ -10,6 +10,7 @@ public class Detection : MonoBehaviour
         if (collision.CompareTag("Player") && this.gameObject.CompareTag("detection"))
         {
             gameObject.GetComponentInParent<CanelitaIA>().isDetecting = true;
+
         }
     }
 
