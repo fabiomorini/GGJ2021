@@ -6,6 +6,8 @@ TagManager:
   tags:
   - detection
   - GameOver
+  - Soundmanager
+  - CharacterManager
   layers:
   - Default
   - TransparentFX
