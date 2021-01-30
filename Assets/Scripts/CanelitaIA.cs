@@ -13,14 +13,21 @@ public class CanelitaIA : MonoBehaviour
     private Rigidbody2D rb;
     private float speed = 15;
     private bool isMoving = false;
-    private bool firstMove = false;
+
+    public GameObject upCone;
+    public GameObject bottomCone;
+    public GameObject leftCone;
+    public GameObject rightCone;
+    public GameObject visualCones;
+
+    [HideInInspector] public bool isDetecting = false;
+    [HideInInspector] public bool stoppedDetecting = false;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         currentPoint = 0;
-        //SetTargetPosition();
     }
 
     // Update is called once per frame
@@ -34,9 +41,36 @@ public class CanelitaIA : MonoBehaviour
 
     private void Update()
     {
-        if (!isMoving)
-        SetTargetPosition();
+        if (stoppedDetecting)
+        {
+            currentPoint = 0;
+            stoppedDetecting = false;
+        }
+        if (!isMoving && !isDetecting && !stoppedDetecting)
+        {
+            SetTargetPosition();
+        }
+        else if (isDetecting)
+        {
+            CatchPlayer();
+        }
     }
+
+    private void CatchPlayer()
+    {
+        isDetecting = true;
+        currentPointToGo = GameObject.FindGameObjectWithTag("Player");
+        difference = currentPointToGo.transform.position - transform.position;
+        targetPosition = currentPointToGo.transform.position;
+        targetPosition.z = 0;
+        upCone.SetActive(false);
+        bottomCone.SetActive(false);
+        leftCone.SetActive(false);
+        rightCone.SetActive(false);
+        visualCones.SetActive(true);
+        isMoving = true;
+    }
+
 
     private void SetTargetPosition()
     {
@@ -64,16 +98,49 @@ public class CanelitaIA : MonoBehaviour
         difference = currentPointToGo.transform.position - transform.position;
         targetPosition = currentPointToGo.transform.position;
         targetPosition.z = 0;
+        GetMoveDireccion(PointsToGo[currentPoint]);
         isMoving = true;
     }
 
-    void Move()
-    { 
+    private void Move()
+    {
         rb.MovePosition(Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime));
         if (transform.position == targetPosition)
         {
             isMoving = false;
             SetTargetPosition();
+        }
+    }
+
+    private void GetMoveDireccion(GameObject pointToGo)
+    {
+        if (pointToGo.transform.position.x > gameObject.transform.position.x)
+        {
+            upCone.SetActive(false);
+            bottomCone.SetActive(false);
+            leftCone.SetActive(false);
+            rightCone.SetActive(true);
+        }
+        if (pointToGo.transform.position.x < gameObject.transform.position.x)
+        {
+            leftCone.SetActive(true);
+            rightCone.SetActive(false);
+            upCone.SetActive(false);
+            bottomCone.SetActive(false);
+        }
+        if (pointToGo.transform.position.y > gameObject.transform.position.y)
+        {
+            upCone.SetActive(true);
+            bottomCone.SetActive(false);
+            leftCone.SetActive(false);
+            rightCone.SetActive(false);
+        }
+        if (pointToGo.transform.position.y < gameObject.transform.position.y)
+        {
+            upCone.SetActive(false);
+            bottomCone.SetActive(true);
+            leftCone.SetActive(false);
+            rightCone.SetActive(false);
         }
     }
 }
