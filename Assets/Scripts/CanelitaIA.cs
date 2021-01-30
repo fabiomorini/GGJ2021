@@ -43,6 +43,7 @@ public class CanelitaIA : MonoBehaviour
     {
         if (stoppedDetecting)
         {
+            speed = 15.0f;
             currentPoint = 0;
             stoppedDetecting = false;
         }
@@ -59,6 +60,7 @@ public class CanelitaIA : MonoBehaviour
     private void CatchPlayer()
     {
         isDetecting = true;
+        speed = 25.0f;
         currentPointToGo = GameObject.FindGameObjectWithTag("Player");
         difference = currentPointToGo.transform.position - transform.position;
         targetPosition = currentPointToGo.transform.position;
