@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
 using DragonBones;
@@ -114,13 +115,13 @@ public class HearthController : MonoBehaviour
 	public void GameOver()
     {
 		gameOver = true;
-		//gameOverUI.SetActive(true);
+		gameOverUI.SetActive(true);
 		timeCounterUI.SetActive(false);
 	}
 
 	public void ReloadGame()
     {
-
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 	public void SetBlood()
