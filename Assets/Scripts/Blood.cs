@@ -31,7 +31,7 @@ public class Blood : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && isTouching && !alreadyUsed)
+        if (isTouching && !alreadyUsed)
         {
             StartCoroutine(UseBlood());
         }
