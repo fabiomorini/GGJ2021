@@ -31,7 +31,7 @@ public class HearthController : MonoBehaviour
 	private void Start()
 	{
 		state = State.PAUSE;
-		maxBlood = 10.0f;
+		maxBlood = 100.0f;
 		rb = GetComponent<Rigidbody2D>();
 		slider.maxValue = maxBlood;
 		slider.value = blood;

@@ -18,8 +18,7 @@ public class CanelitaIA : MonoBehaviour
     public GameObject bottomCone;
     public GameObject leftCone;
     public GameObject rightCone;
-
-    [HideInInspector] public int detectionCounter = 0;
+    public GameObject visualCones;
 
     [HideInInspector] public bool isDetecting = false;
     [HideInInspector] public bool stoppedDetecting = false;
@@ -59,15 +58,16 @@ public class CanelitaIA : MonoBehaviour
 
     private void CatchPlayer()
     {
-
+        isDetecting = true;
         currentPointToGo = GameObject.FindGameObjectWithTag("Player");
         difference = currentPointToGo.transform.position - transform.position;
         targetPosition = currentPointToGo.transform.position;
         targetPosition.z = 0;
-        upCone.SetActive(true);
-        bottomCone.SetActive(true);
-        leftCone.SetActive(true);
-        rightCone.SetActive(true);
+        upCone.SetActive(false);
+        bottomCone.SetActive(false);
+        leftCone.SetActive(false);
+        rightCone.SetActive(false);
+        visualCones.SetActive(true);
         isMoving = true;
     }
 
