@@ -10,8 +10,11 @@ public class MenuHandler : MonoBehaviour
     public GameObject Title2;
     public GameObject Title3;
     public GameObject Title4;
-    public GameObject Buttons;
-
+    public GameObject playButton;
+    public GameObject exitButton;
+    public GameObject creditsButton;
+    public GameObject returnButton;
+    public GameObject creditsImage;
 
 
     private void Start()
@@ -33,6 +36,22 @@ public class MenuHandler : MonoBehaviour
     public void PlayLevel()
     {
         StartCoroutine(PlayGame());
+    }
+    public void Credits()
+    {
+        creditsImage.SetActive(true);
+        playButton.SetActive(false);
+        exitButton.SetActive(false);
+        creditsButton.SetActive(false);
+        returnButton.SetActive(true);
+    }
+    public void Return()
+    {
+        creditsImage.SetActive(false);
+        playButton.SetActive(true);
+        exitButton.SetActive(true);
+        creditsButton.SetActive(true);
+        returnButton.SetActive(false);
     }
 
     public IEnumerator PlayGame()
@@ -57,7 +76,9 @@ public class MenuHandler : MonoBehaviour
         SoundManager.PlaySound("Title");
         Title4.SetActive(true);
         yield return new WaitForSeconds(0.5f);
-        Buttons.SetActive(true);
+        playButton.SetActive(true);
+        exitButton.SetActive(true);
+        creditsButton.SetActive(true);
 
     }
 }

@@ -60,7 +60,7 @@ public class SoundManager : MonoBehaviour
                 break;
             case "Title":
                 audioSrc.PlayOneShot(titleSound);
-                break;
+                break;            
         }
     }
 }
