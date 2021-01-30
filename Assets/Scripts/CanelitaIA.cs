@@ -14,6 +14,15 @@ public class CanelitaIA : MonoBehaviour
     private float speed = 15;
     private bool isMoving = false;
 
+    public GameObject upCone;
+    public GameObject bottomCone;
+    public GameObject leftCone;
+    public GameObject rightCone;
+
+    [HideInInspector] public int detectionCounter = 0;
+
+    [HideInInspector] public bool isDetecting = false;
+    [HideInInspector] public bool stoppedDetecting = false;
 
     // Start is called before the first frame update
     void Start()
@@ -33,12 +42,35 @@ public class CanelitaIA : MonoBehaviour
 
     private void Update()
     {
-        GetMoveDireccion();
-        if (!isMoving)
+        if (stoppedDetecting)
+        {
+            currentPoint = 0;
+            stoppedDetecting = false;
+        }
+        if (!isMoving && !isDetecting && !stoppedDetecting)
         {
             SetTargetPosition();
         }
+        else if (isDetecting)
+        {
+            CatchPlayer();
+        }
     }
+
+    private void CatchPlayer()
+    {
+
+        currentPointToGo = GameObject.FindGameObjectWithTag("Player");
+        difference = currentPointToGo.transform.position - transform.position;
+        targetPosition = currentPointToGo.transform.position;
+        targetPosition.z = 0;
+        upCone.SetActive(true);
+        bottomCone.SetActive(true);
+        leftCone.SetActive(true);
+        rightCone.SetActive(true);
+        isMoving = true;
+    }
+
 
     private void SetTargetPosition()
     {
@@ -66,11 +98,12 @@ public class CanelitaIA : MonoBehaviour
         difference = currentPointToGo.transform.position - transform.position;
         targetPosition = currentPointToGo.transform.position;
         targetPosition.z = 0;
+        GetMoveDireccion(PointsToGo[currentPoint]);
         isMoving = true;
     }
 
     private void Move()
-    { 
+    {
         rb.MovePosition(Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime));
         if (transform.position == targetPosition)
         {
@@ -79,24 +112,35 @@ public class CanelitaIA : MonoBehaviour
         }
     }
 
-    private void GetMoveDireccion()
+    private void GetMoveDireccion(GameObject pointToGo)
     {
-        Debug.Log(rb.velocity);
-        if (rb.velocity.x > 0.1f)
+        if (pointToGo.transform.position.x > gameObject.transform.position.x)
         {
-            Debug.Log("Derecha");
+            upCone.SetActive(false);
+            bottomCone.SetActive(false);
+            leftCone.SetActive(false);
+            rightCone.SetActive(true);
         }
-        if (rb.velocity.x < -0.1f)
+        if (pointToGo.transform.position.x < gameObject.transform.position.x)
         {
-            Debug.Log("Izquierda");
+            leftCone.SetActive(true);
+            rightCone.SetActive(false);
+            upCone.SetActive(false);
+            bottomCone.SetActive(false);
         }
-        if (rb.velocity.y > 0.1f)
+        if (pointToGo.transform.position.y > gameObject.transform.position.y)
         {
-            Debug.Log("Arriba");
+            upCone.SetActive(true);
+            bottomCone.SetActive(false);
+            leftCone.SetActive(false);
+            rightCone.SetActive(false);
         }
-        if (rb.velocity.y < -0.1f)
+        if (pointToGo.transform.position.y < gameObject.transform.position.y)
         {
-            Debug.Log("Abajo");
+            upCone.SetActive(false);
+            bottomCone.SetActive(true);
+            leftCone.SetActive(false);
+            rightCone.SetActive(false);
         }
     }
 }

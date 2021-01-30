@@ -107,7 +107,7 @@ public class HearthController : MonoBehaviour
         }
 	}
 
-	private void GameOver()
+	public void GameOver()
     {
 		gameOver = true;
 		gameOverUI.SetActive(true);
