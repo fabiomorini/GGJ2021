@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63191782d79fa82499f79469cd2d9fab, type: 3}
+  m_Name: Canelita_Data
+  m_EditorClassIdentifier: 
+  dataName: Canelita
+  dragonBonesJSON: {fileID: 4900000, guid: 88246477c7de8dd488089eec4d2e40b7, type: 3}
+  textureAtlas:
+  - textureAtlasJSON: {fileID: 4900000, guid: 3b8e5a9f1e027a1449e0469479d71564, type: 3}
+    texture: {fileID: 2800000, guid: 03859fecee439864cae085ea13033f2c, type: 3}
+    material: {fileID: 2100000, guid: b12048feb08eefc4f89a1af724b668e6, type: 2}
+    uiMaterial: {fileID: 0}

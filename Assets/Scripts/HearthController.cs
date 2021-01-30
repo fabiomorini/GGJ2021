@@ -13,7 +13,7 @@ public class HearthController : MonoBehaviour
 	float moveLimiter = 0.7f;
 
 	private float blood;
-	private float maxBlood;
+	public float maxBlood;
 	private float timer = 0.0f;
 	private bool gameOver = false;
 	public GameObject gameOverUI;
@@ -31,7 +31,6 @@ public class HearthController : MonoBehaviour
 	private void Start()
 	{
 		state = State.PAUSE;
-		maxBlood = 8.0f;
 		rb = GetComponent<Rigidbody2D>();
 		slider.maxValue = maxBlood;
 		slider.value = blood;
