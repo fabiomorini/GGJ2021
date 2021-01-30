@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using DragonBones;
 
 public class HearthController : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class HearthController : MonoBehaviour
 	public Slider slider;
 	private State state;
 
+	[HideInInspector] public UnityArmatureComponent anim;
+
 	private enum State
     {
 		PAUSE,
@@ -30,10 +33,12 @@ public class HearthController : MonoBehaviour
 
 	private void Start()
 	{
+		anim = GetComponentInChildren<UnityArmatureComponent>();
 		state = State.PAUSE;
 		rb = GetComponent<Rigidbody2D>();
 		slider.maxValue = maxBlood;
 		slider.value = blood;
+		anim.animation.Play(("Idle_Walk"), -1);
 		SetBlood();
 	}
 
@@ -109,7 +114,7 @@ public class HearthController : MonoBehaviour
 	public void GameOver()
     {
 		gameOver = true;
-		gameOverUI.SetActive(true);
+		//gameOverUI.SetActive(true);
 		timeCounterUI.SetActive(false);
 	}
 

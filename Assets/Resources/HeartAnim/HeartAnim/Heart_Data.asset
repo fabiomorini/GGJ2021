@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63191782d79fa82499f79469cd2d9fab, type: 3}
+  m_Name: Heart_Data
+  m_EditorClassIdentifier: 
+  dataName: Heart
+  dragonBonesJSON: {fileID: 4900000, guid: 17a19d5a3335a9b44ad2bb4fac4b2418, type: 3}
+  textureAtlas:
+  - textureAtlasJSON: {fileID: 4900000, guid: 95271526082543a449a6a10cc57d85e5, type: 3}
+    texture: {fileID: 2800000, guid: 02e98d9c8d46af6469fcabbf791df73b, type: 3}
+    material: {fileID: 2100000, guid: 15d0bd29a0c20264fbf075d121f9ae98, type: 2}
+    uiMaterial: {fileID: 0}
