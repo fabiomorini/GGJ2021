@@ -24,7 +24,7 @@ public class CanelitaIA : MonoBehaviour
     [HideInInspector] public bool isDetecting = false;
     [HideInInspector] public bool stoppedDetecting = false;
 
-    private UnityArmatureComponent anim;
+    public UnityArmatureComponent anim;
 
     // Start is called before the first frame update
     void Start()
@@ -63,10 +63,7 @@ public class CanelitaIA : MonoBehaviour
 
     private void CatchPlayer()
     {
-        if (!isDetecting)
-        {
-            anim.animation.Play(("Run_Loop"), -1);
-        }
+        //anim.animation.Play(("Surprise"), 1);
         isDetecting = true;
         speed = 25.0f;
         currentPointToGo = GameObject.FindGameObjectWithTag("Player");
