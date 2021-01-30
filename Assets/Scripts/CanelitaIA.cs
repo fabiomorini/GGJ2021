@@ -13,14 +13,13 @@ public class CanelitaIA : MonoBehaviour
     private Rigidbody2D rb;
     private float speed = 15;
     private bool isMoving = false;
-    private bool firstMove = false;
+
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         currentPoint = 0;
-        //SetTargetPosition();
     }
 
     // Update is called once per frame
@@ -34,8 +33,11 @@ public class CanelitaIA : MonoBehaviour
 
     private void Update()
     {
+        GetMoveDireccion();
         if (!isMoving)
-        SetTargetPosition();
+        {
+            SetTargetPosition();
+        }
     }
 
     private void SetTargetPosition()
@@ -67,13 +69,34 @@ public class CanelitaIA : MonoBehaviour
         isMoving = true;
     }
 
-    void Move()
+    private void Move()
     { 
         rb.MovePosition(Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime));
         if (transform.position == targetPosition)
         {
             isMoving = false;
             SetTargetPosition();
+        }
+    }
+
+    private void GetMoveDireccion()
+    {
+        Debug.Log(rb.velocity);
+        if (rb.velocity.x > 0.1f)
+        {
+            Debug.Log("Derecha");
+        }
+        if (rb.velocity.x < -0.1f)
+        {
+            Debug.Log("Izquierda");
+        }
+        if (rb.velocity.y > 0.1f)
+        {
+            Debug.Log("Arriba");
+        }
+        if (rb.velocity.y < -0.1f)
+        {
+            Debug.Log("Abajo");
         }
     }
 }
