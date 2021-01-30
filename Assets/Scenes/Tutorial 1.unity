@@ -2021,6 +2021,18 @@ Transform:
   m_Father: {fileID: 652623626}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &2132776115 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8402804849197036521, guid: e3f8bacc42630004da5efd8efe9c191a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8402804849697687313}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d93e620c7ea4dfa4c998c5f199cee544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2133676078 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3930593837182393081, guid: 476553b152e2a75478d7935eeccddfa3,
@@ -2153,6 +2165,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7125039622732982299, guid: 8c0603f4b0b3aeb4cb9533647bade6cc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2132776115}
+    - target: {fileID: 7125039622732982299, guid: 8c0603f4b0b3aeb4cb9533647bade6cc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReloadGame
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c0603f4b0b3aeb4cb9533647bade6cc, type: 3}
