@@ -8,9 +8,12 @@ public class HearthController : MonoBehaviour
 {
 	private float speed = 15.0f;
 	private Rigidbody2D rb;
-	private Vector2 force;
+	float horizontal;
+	float vertical;
+	float moveLimiter = 0.7f;
+
 	private float blood;
-	private float maxBlood = 10.0f;
+	private float maxBlood;
 	private float timer = 0.0f;
 	private bool gameOver = false;
 	public GameObject gameOverUI;
@@ -39,8 +42,14 @@ public class HearthController : MonoBehaviour
 	{
 		if (!gameOver)
 		{
-			force = new Vector2(Input.GetAxisRaw("Horizontal") * speed, Input.GetAxisRaw("Vertical") * speed).normalized;
-			rb.MovePosition(rb.position + force * speed * Time.fixedDeltaTime);
+
+			if (horizontal != 0 && vertical != 0)
+			{
+				horizontal *= moveLimiter;
+				vertical *= moveLimiter;
+			}
+
+			rb.velocity = new Vector2(horizontal * speed, vertical * speed);
 		}
 	}
 
@@ -48,6 +57,10 @@ public class HearthController : MonoBehaviour
     {
 		if (!gameOver)
 		{
+			//movement
+			horizontal = Input.GetAxisRaw("Horizontal"); 
+			vertical = Input.GetAxisRaw("Vertical"); 
+
 			if (!(Input.GetKeyDown(KeyCode.LeftShift)) && 
 			     (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) 
 			   || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D)))
