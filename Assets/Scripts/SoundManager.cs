@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
 
-    public static AudioClip hoverMenuSound, clickMenuSound, 
+    public static AudioClip hoverMenuSound, clickMenuSound, titleSound, 
                             returnSound, playSound, ambientSound, 
                             walkingSound, healingSound, victorySound, lostSound;
 
@@ -14,6 +14,7 @@ public class SoundManager : MonoBehaviour
     public void Start()
     {
         playSound = Resources.Load<AudioClip>("Play");
+        titleSound = Resources.Load<AudioClip>("Title");
         returnSound = Resources.Load<AudioClip>("Return");
         hoverMenuSound = Resources.Load<AudioClip>("HoverMenu");
         clickMenuSound = Resources.Load<AudioClip>("ClickMenu");
@@ -56,6 +57,9 @@ public class SoundManager : MonoBehaviour
                 break;
             case "Healing":
                 audioSrc.PlayOneShot(healingSound);
+                break;
+            case "Title":
+                audioSrc.PlayOneShot(titleSound);
                 break;
         }
     }
