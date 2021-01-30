@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DragonBones;
 
 public class CanelitaIA : MonoBehaviour
 {
@@ -23,11 +24,14 @@ public class CanelitaIA : MonoBehaviour
     [HideInInspector] public bool isDetecting = false;
     [HideInInspector] public bool stoppedDetecting = false;
 
+    public UnityArmatureComponent anim;
+
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponentInChildren<UnityArmatureComponent>();
         rb = GetComponent<Rigidbody2D>();
-        currentPoint = 0;
+        currentPoint = 0; 
     }
 
     // Update is called once per frame
@@ -59,6 +63,7 @@ public class CanelitaIA : MonoBehaviour
 
     private void CatchPlayer()
     {
+        //anim.animation.Play(("Surprise"), 1);
         isDetecting = true;
         speed = 25.0f;
         currentPointToGo = GameObject.FindGameObjectWithTag("Player");
@@ -76,6 +81,7 @@ public class CanelitaIA : MonoBehaviour
 
     private void SetTargetPosition()
     {
+        anim.animation.Play(("Walk_Loop"), -1);
         if (currentPoint == PointsToGo.Length - 1)
         {
             goingBackwards = true;
