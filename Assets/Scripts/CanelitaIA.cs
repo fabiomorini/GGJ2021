@@ -26,6 +26,8 @@ public class CanelitaIA : MonoBehaviour
 
     [HideInInspector] public UnityArmatureComponent anim;
 
+    public bool justAttacked = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,18 +65,21 @@ public class CanelitaIA : MonoBehaviour
 
     private void CatchPlayer()
     {
-        isDetecting = true;
-        speed = 25.0f;
-        currentPointToGo = GameObject.FindGameObjectWithTag("Player");
-        difference = currentPointToGo.transform.position - transform.position;
-        targetPosition = currentPointToGo.transform.position;
-        targetPosition.z = 0;
-        upCone.SetActive(true);
-        bottomCone.SetActive(true);
-        leftCone.SetActive(true);
-        rightCone.SetActive(true);
-        visualCones.SetActive(true);
-        isMoving = true;
+        if (!justAttacked)
+        {
+            isDetecting = true;
+            speed = 25.0f;
+            currentPointToGo = GameObject.FindGameObjectWithTag("Player");
+            difference = currentPointToGo.transform.position - transform.position;
+            targetPosition = currentPointToGo.transform.position;
+            targetPosition.z = 0;
+            upCone.SetActive(true);
+            bottomCone.SetActive(true);
+            leftCone.SetActive(true);
+            rightCone.SetActive(true);
+            visualCones.SetActive(true);
+            isMoving = true;
+        }
     }
 
 

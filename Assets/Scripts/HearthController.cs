@@ -7,13 +7,13 @@ using DragonBones;
 
 public class HearthController : MonoBehaviour
 {
-	private float speed = 15.0f;
+	public float speed = 15.0f;
 	private Rigidbody2D rb;
 	float horizontal;
 	float vertical;
 	float moveLimiter = 0.7f;
 
-	private float blood;
+	public float blood;
 	public float maxBlood;
 	private float timer = 0.0f;
 	private bool gameOver = false;
@@ -21,6 +21,7 @@ public class HearthController : MonoBehaviour
 	public GameObject timeCounterUI;
 	public Slider slider;
 	private State state;
+	public bool blockSpeed;
 
 	[HideInInspector] public UnityArmatureComponent anim;
 
@@ -46,14 +47,16 @@ public class HearthController : MonoBehaviour
 	{
 		if (!gameOver)
 		{
-
-			if (horizontal != 0 && vertical != 0)
+			if (!blockSpeed)
 			{
-				horizontal *= moveLimiter;
-				vertical *= moveLimiter;
-			}
+				if (horizontal != 0 && vertical != 0)
+				{
+					horizontal *= moveLimiter;
+					vertical *= moveLimiter;
+				}
 
-			rb.velocity = new Vector2(horizontal * speed, vertical * speed);
+				rb.velocity = new Vector2(horizontal * speed, vertical * speed);
+			}
 		}
 	}
 
