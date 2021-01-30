@@ -8,7 +8,14 @@ public class CatchHearth : MonoBehaviour
     {
         if (collision.CompareTag("Player") && this.gameObject.CompareTag("GameOver"))
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<HearthController>().GameOver();
+            StartCoroutine(Anim());
         }
+    }
+
+    private IEnumerator Anim()
+    {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<HearthController>().anim.animation.Play(("Hurt_GameOver"), 1);
+        yield return new WaitForSeconds(1f);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<HearthController>().anim.animation.Play(("Idle_Walk"), -1);
     }
 }
