@@ -31,7 +31,7 @@ public class CanelitaIA : MonoBehaviour
     {
         anim = GetComponentInChildren<UnityArmatureComponent>();
         rb = GetComponent<Rigidbody2D>();
-        currentPoint = 0;
+        currentPoint = 0; 
     }
 
     // Update is called once per frame
@@ -45,7 +45,6 @@ public class CanelitaIA : MonoBehaviour
 
     private void Update()
     {
-        //anim.animation.
         if (stoppedDetecting)
         {
             speed = 15.0f;
@@ -64,8 +63,10 @@ public class CanelitaIA : MonoBehaviour
 
     private void CatchPlayer()
     {
-        
-
+        if (!isDetecting)
+        {
+            anim.animation.Play(("Run_Loop"), -1);
+        }
         isDetecting = true;
         speed = 25.0f;
         currentPointToGo = GameObject.FindGameObjectWithTag("Player");
@@ -83,6 +84,7 @@ public class CanelitaIA : MonoBehaviour
 
     private void SetTargetPosition()
     {
+        anim.animation.Play(("Walk_Loop"), -1);
         if (currentPoint == PointsToGo.Length - 1)
         {
             goingBackwards = true;
