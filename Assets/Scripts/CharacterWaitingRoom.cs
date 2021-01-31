@@ -81,7 +81,7 @@ public class CharacterWaitingRoom : MonoBehaviour
 
 	public void BuyTirita()
     {
-		if(characterManager.coins > 10)
+		if(characterManager.coins > 10 && characterManager.tirita != true && characterManager.desfibrilador != true && characterManager.cafe != true)
         {
 			characterManager.coins -= 10;
 			characterManager.tirita = true;
@@ -91,7 +91,7 @@ public class CharacterWaitingRoom : MonoBehaviour
 
 	public void BuyCafe()
 	{
-		if (characterManager.coins > 25)
+		if (characterManager.coins > 25 && characterManager.tirita != true && characterManager.desfibrilador != true && characterManager.cafe != true)
 		{
 			characterManager.coins -= 25;
 			characterManager.cafe = true;
@@ -100,7 +100,7 @@ public class CharacterWaitingRoom : MonoBehaviour
 	}
 	public void BuyDesfibrilador()
 	{
-		if (characterManager.coins > 50)
+		if (characterManager.coins > 50 && characterManager.tirita != true && characterManager.desfibrilador != true && characterManager.cafe != true)
 		{
 			characterManager.coins -= 50;
 			characterManager.desfibrilador = true;
