@@ -1186,6 +1186,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1761704630234638424, guid: f4127d091a29cf14e98e674a30a83b4c,
+        type: 3}
+      propertyPath: cafeObj
+      value: 
+      objectReference: {fileID: 472223935}
+    - target: {fileID: 1761704630234638424, guid: f4127d091a29cf14e98e674a30a83b4c,
+        type: 3}
+      propertyPath: tiritaObj
+      value: 
+      objectReference: {fileID: 472223934}
+    - target: {fileID: 1761704630234638424, guid: f4127d091a29cf14e98e674a30a83b4c,
+        type: 3}
+      propertyPath: desfiObj
+      value: 
+      objectReference: {fileID: 472223933}
     - target: {fileID: 1761704630234638425, guid: f4127d091a29cf14e98e674a30a83b4c,
         type: 3}
       propertyPath: m_Name
@@ -1193,6 +1208,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4127d091a29cf14e98e674a30a83b4c, type: 3}
+--- !u!1 &472223933 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6050103584158586870, guid: f4127d091a29cf14e98e674a30a83b4c,
+    type: 3}
+  m_PrefabInstance: {fileID: 472223932}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &472223934 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7630650841056440593, guid: f4127d091a29cf14e98e674a30a83b4c,
+    type: 3}
+  m_PrefabInstance: {fileID: 472223932}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &472223935 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8422329703198906684, guid: f4127d091a29cf14e98e674a30a83b4c,
+    type: 3}
+  m_PrefabInstance: {fileID: 472223932}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &541377128
 GameObject:
   m_ObjectHideFlags: 0
