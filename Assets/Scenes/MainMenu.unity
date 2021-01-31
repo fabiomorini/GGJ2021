@@ -742,7 +742,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7e8ff24e5ec5cc24fbede389449406c2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e09e047fc962bc440923280a4a289939, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1
@@ -1014,7 +1014,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hearth!
+  m_text: Heart!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bec8deddf8432d143b12a342c5b691cb, type: 2}
   m_sharedMaterial: {fileID: 5753110288876610072, guid: bec8deddf8432d143b12a342c5b691cb,
@@ -2722,7 +2722,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -606, y: 236.00003}
+  m_AnchoredPosition: {x: -549, y: 236.00003}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1668625310

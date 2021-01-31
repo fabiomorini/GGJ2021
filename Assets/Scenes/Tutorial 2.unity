@@ -1211,7 +1211,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 37.54731, y: 7.2546167, z: -10}
+  m_LocalPosition: {x: 37.470634, y: 7.2535143, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1572,6 +1572,21 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4812512938384703609, guid: 0bdeae6aabf7b6a46804f86b63200211,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812512938384703609, guid: 0bdeae6aabf7b6a46804f86b63200211,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387746290798014035, guid: 0bdeae6aabf7b6a46804f86b63200211,
+        type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 733184220}
     - target: {fileID: 9125063699342172552, guid: 0bdeae6aabf7b6a46804f86b63200211,
         type: 3}
       propertyPath: m_SortingOrder
@@ -3756,6 +3771,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &733184220 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6579035607799865086, guid: 8318769b6b3603b498935978109167f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 643085913}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &779435068
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5281,7 +5302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 1}
+  m_Color: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 0.6509804}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
