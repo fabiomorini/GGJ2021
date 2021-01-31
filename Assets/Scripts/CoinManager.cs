@@ -10,6 +10,7 @@ public class CoinManager : MonoBehaviour
         {
             GameObject.FindGameObjectWithTag("CharacterManager").GetComponent<CharacterManager>().coins += 10;
             SoundManager.PlaySound("CoinSound");
+            Destroy(gameObject);
         }
     }
 }
