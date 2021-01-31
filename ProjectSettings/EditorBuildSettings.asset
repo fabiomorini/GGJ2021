@@ -17,15 +17,24 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ascensor.unity
     guid: b067ee56e698f474b8a234d4e30b77a0
-  - enabled: 0
-    path: Assets/Scenes/Nivel1.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Nivel1Nuevo.unity
+    guid: 27a5837f9dfec274e8540db4e12c0d9a
+  - enabled: 1
+    path: Assets/Scenes/Ascensor 1.unity
+    guid: 743cc2a5c24e44c41a32791b56577ef1
   - enabled: 1
     path: Assets/Scenes/Nivel2.unity
     guid: 58ae6df95c5d13b48b119da327a9bf46
   - enabled: 1
+    path: Assets/Scenes/Ascensor 2.unity
+    guid: 7c044f457918d1c4aa49c3f87f7cd47a
+  - enabled: 1
     path: Assets/Scenes/Nivel3.unity
     guid: 4bc235e8acebaac4a83144697276c48c
+  - enabled: 1
+    path: Assets/Scenes/Ascensor 3.unity
+    guid: fcff12238d3f8e1468660d78738a39e4
   - enabled: 1
     path: Assets/Scenes/Nivel4.unity
     guid: 8808c61e2b897e54b9d9274bef14bddb
