@@ -34,7 +34,7 @@ public class CharacterManager : MonoBehaviour
             desfiObj.SetActive(true);
         }
 
-        if (SceneManager.GetActiveScene().buildIndex != 0)
+        if (SceneManager.GetActiveScene().buildIndex != 1)
         {
             coinsText.SetText("" + coins);
             coinsImage.SetActive(true);
