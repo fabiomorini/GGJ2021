@@ -5,24 +5,27 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
 
-    public static AudioClip hoverMenuSound, clickMenuSound, titleSound, 
-                            returnSound, playSound, ambientSound, 
+    public static AudioClip hoverMenuSound, clickMenuSound, titleSound1, titleSound2, levelendSound, bloodSound, 
+                            returnSound, playSound, ambientSound, detectionSound, 
                             walkingSound, healingSound, victorySound, lostSound;
 
     static AudioSource audioSrc;
 
     public void Start()
     {
-        playSound = Resources.Load<AudioClip>("Play");
-        titleSound = Resources.Load<AudioClip>("Title");
+        playSound = Resources.Load<AudioClip>("Click");
+        titleSound1 = Resources.Load<AudioClip>("Title1");
+        titleSound2 = Resources.Load<AudioClip>("Title2");
         returnSound = Resources.Load<AudioClip>("Return");
-        hoverMenuSound = Resources.Load<AudioClip>("HoverMenu");
-        clickMenuSound = Resources.Load<AudioClip>("ClickMenu");
+        hoverMenuSound = Resources.Load<AudioClip>("Hover");
         ambientSound = Resources.Load<AudioClip>("Ambient");
+        levelendSound = Resources.Load<AudioClip>("LevelEnd");
         walkingSound = Resources.Load<AudioClip>("Walking");
         victorySound = Resources.Load<AudioClip>("Victory");
         lostSound = Resources.Load<AudioClip>("Lost");
         healingSound = Resources.Load<AudioClip>("Healing");
+        bloodSound = Resources.Load<AudioClip>("Blood");
+        detectionSound = Resources.Load<AudioClip>("Detection");
 
         audioSrc = GetComponent<AudioSource>();
     }
@@ -31,7 +34,7 @@ public class SoundManager : MonoBehaviour
     {
         switch (clip)
         {
-            case "Play":
+            case "Click":
                 audioSrc.PlayOneShot(playSound);
                 break;
             case "Return":
@@ -39,9 +42,6 @@ public class SoundManager : MonoBehaviour
                 break;
             case "HoverMenu":
                 audioSrc.PlayOneShot(hoverMenuSound);
-                break;
-            case "ClickMenu":
-                audioSrc.PlayOneShot(clickMenuSound);
                 break;
             case "ambient":
                 audioSrc.PlayOneShot(ambientSound);
@@ -58,8 +58,20 @@ public class SoundManager : MonoBehaviour
             case "Healing":
                 audioSrc.PlayOneShot(healingSound);
                 break;
-            case "Title":
-                audioSrc.PlayOneShot(titleSound);
+            case "Title1":
+                audioSrc.PlayOneShot(titleSound1);
+                break;
+            case "Title2":
+                audioSrc.PlayOneShot(titleSound2);
+                break;            
+            case "LevelEnd":
+                audioSrc.PlayOneShot(levelendSound);
+                break;            
+            case "Blood":
+                audioSrc.PlayOneShot(bloodSound);
+                break;            
+            case "Detection":
+                audioSrc.PlayOneShot(detectionSound);
                 break;
         }
     }

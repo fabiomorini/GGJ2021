@@ -39,6 +39,7 @@ public class Blood : MonoBehaviour
 
     private IEnumerator UseBlood()
     {
+        SoundManager.PlaySound("Blood");
         alreadyUsed = true;
         yield return new WaitForSeconds(0.01f);
         Player.GetComponent<HearthController>().SetBlood();

@@ -30,6 +30,7 @@ public class Detection : MonoBehaviour
     {
         if (!alreadyDone)
         {
+            SoundManager.PlaySound("Detection");
             gameObject.GetComponentInParent<CanelitaIA>().anim.animation.Play(("Surprise"), 1);
             yield return new WaitForSeconds(1f);
             gameObject.GetComponentInParent<CanelitaIA>().anim.animation.Play(("Run_Loop"), -1);

@@ -8,6 +8,7 @@ public class CharacterManager : MonoBehaviour
 
     private void Start()
     {
+        coins = 0;
         DontDestroyOnLoad(gameObject);
     }
 }
