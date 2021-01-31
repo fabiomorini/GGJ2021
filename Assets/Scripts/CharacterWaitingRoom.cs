@@ -16,6 +16,10 @@ public class CharacterWaitingRoom : MonoBehaviour
 	private float maxBlood;
 	public Slider slider;
 
+	private bool activeCoffee = false;
+	private bool activeDesfibrillator = false;
+	private bool activeBandAid = false;
+
 	private CharacterManager characterManager;
 
 	[HideInInspector] public UnityArmatureComponent anim;
@@ -30,6 +34,7 @@ public class CharacterWaitingRoom : MonoBehaviour
 		slider.maxValue = maxBlood;
 		slider.value = blood;
 		anim.animation.Play(("Idle_Walk"), -1);
+		SetPowerUps();
 	}
 
 	private void FixedUpdate()
@@ -58,21 +63,49 @@ public class CharacterWaitingRoom : MonoBehaviour
 			speed = 15.0f;
 		}
 	}
+	private void SetPowerUps()
+	{
+		if (characterManager.tirita)
+		{
+			activeBandAid = true;
+		}
+		if (characterManager.cafe)
+		{
+			activeCoffee = true;
+		}
+		if (characterManager.desfibrilador)
+		{
+			activeDesfibrillator = true;
+		}
+	}
 
 	public void BuyTirita()
     {
-		characterManager.coins -= 10;
-		SoundManager.PlaySound("InsertCoin");
+		if(characterManager.coins > 10)
+        {
+			characterManager.coins -= 10;
+			characterManager.tirita = true;
+			SoundManager.PlaySound("InsertCoin");
+		}
 	}
+
 	public void BuyCafe()
 	{
-		characterManager.coins -= 25;
-		SoundManager.PlaySound("InsertCoin");
+		if (characterManager.coins > 25)
+		{
+			characterManager.coins -= 25;
+			characterManager.cafe = true;
+			SoundManager.PlaySound("InsertCoin");
+		}
 	}
 	public void BuyDesfibrilador()
 	{
-		characterManager.coins -= 50;
-		SoundManager.PlaySound("InsertCoin");
+		if (characterManager.coins > 50)
+		{
+			characterManager.coins -= 50;
+			characterManager.desfibrilador = true;
+			SoundManager.PlaySound("InsertCoin");
+		}
 	}
 
 	public void SetBlood()
