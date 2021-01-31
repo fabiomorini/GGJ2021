@@ -23,6 +23,11 @@ public class HearthController : MonoBehaviour
 	public Slider slider;
 	private State state;
 	public bool blockSpeed;
+	public bool activeCoffee = false;
+	public bool activeDesfibrillator = false;
+	public bool activeBandAid = false;
+	private bool blockLife = false;
+	private bool blockSpeedCoffee = false;
 
 	[HideInInspector] public UnityArmatureComponent anim;
 
@@ -73,22 +78,69 @@ public class HearthController : MonoBehaviour
 			     (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) 
 			   || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D)))
 			{
-				state = State.WALKING;
+				if (!blockLife)
+				{
+					state = State.WALKING;
+				}
 			}
 
 			if (Input.GetKeyDown(KeyCode.LeftShift))
 			{
-				speed = 25.0f;
-				state = State.RUNNING;
+				if (!blockSpeedCoffee)
+				{
+					speed = 25.0f;
+				}
+
+				if (!blockLife)
+				{
+					state = State.RUNNING;
+				}
 			}
 			if(Input.GetKeyUp(KeyCode.LeftShift))
 			{
-				speed = 15.0f;
-				state = State.WALKING;
+				if (!blockSpeedCoffee)
+				{
+					speed = 15.0f;
+				}
+
+				if (!blockLife)
+				{
+					state = State.WALKING;
+				}
 			}
+			if (activeCoffee && Input.GetKeyDown(KeyCode.E))
+			{
+				StartCoroutine(Coffee());
+			}
+
+			if (activeBandAid && Input.GetKeyDown(KeyCode.E))
+            {
+				StartCoroutine(BandAid());
+			}
+
 			DrainBlood();
 		}
     }
+
+	private IEnumerator Coffee()
+    {
+		blockSpeedCoffee = true;
+		speed = 30.0f;
+		yield return new WaitForSeconds(2.5f);
+		speed = 15.0f;
+		activeCoffee = false;
+		blockSpeedCoffee = false;
+	}
+
+	private IEnumerator BandAid()
+	{
+		blockLife = true;
+		state = State.PAUSE;
+		yield return new WaitForSeconds(2.5f);
+		state = State.WALKING;
+		activeBandAid = false;
+		blockLife = false;
+	}
 
 	private void DrainBlood()
     {
@@ -111,7 +163,16 @@ public class HearthController : MonoBehaviour
 		}
 		else
         {
-			GameOver();
+			if (activeDesfibrillator)
+            {
+				blood = maxBlood + 1;
+				timer = maxBlood;
+				activeDesfibrillator = false;
+			}
+            else
+            {
+				GameOver();
+			}
         }
 	}
 
