@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
 
-    public static AudioClip hoverMenuSound, clickMenuSound, titleSound, 
+    public static AudioClip hoverMenuSound, clickMenuSound, titleSound1, titleSound2, 
                             returnSound, playSound, ambientSound, 
                             walkingSound, healingSound, victorySound, lostSound;
 
@@ -13,11 +13,11 @@ public class SoundManager : MonoBehaviour
 
     public void Start()
     {
-        playSound = Resources.Load<AudioClip>("Play");
-        titleSound = Resources.Load<AudioClip>("Title");
+        playSound = Resources.Load<AudioClip>("Click");
+        titleSound1 = Resources.Load<AudioClip>("Title1");
+        titleSound2 = Resources.Load<AudioClip>("Title2");
         returnSound = Resources.Load<AudioClip>("Return");
-        hoverMenuSound = Resources.Load<AudioClip>("HoverMenu");
-        clickMenuSound = Resources.Load<AudioClip>("ClickMenu");
+        hoverMenuSound = Resources.Load<AudioClip>("Hover");
         ambientSound = Resources.Load<AudioClip>("Ambient");
         walkingSound = Resources.Load<AudioClip>("Walking");
         victorySound = Resources.Load<AudioClip>("Victory");
@@ -31,7 +31,7 @@ public class SoundManager : MonoBehaviour
     {
         switch (clip)
         {
-            case "Play":
+            case "Click":
                 audioSrc.PlayOneShot(playSound);
                 break;
             case "Return":
@@ -39,9 +39,6 @@ public class SoundManager : MonoBehaviour
                 break;
             case "HoverMenu":
                 audioSrc.PlayOneShot(hoverMenuSound);
-                break;
-            case "ClickMenu":
-                audioSrc.PlayOneShot(clickMenuSound);
                 break;
             case "ambient":
                 audioSrc.PlayOneShot(ambientSound);
@@ -58,8 +55,11 @@ public class SoundManager : MonoBehaviour
             case "Healing":
                 audioSrc.PlayOneShot(healingSound);
                 break;
-            case "Title":
-                audioSrc.PlayOneShot(titleSound);
+            case "Title1":
+                audioSrc.PlayOneShot(titleSound1);
+                break;
+            case "Title2":
+                audioSrc.PlayOneShot(titleSound2);
                 break;
         }
     }

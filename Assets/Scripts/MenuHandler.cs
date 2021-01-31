@@ -10,8 +10,12 @@ public class MenuHandler : MonoBehaviour
     public GameObject Title2;
     public GameObject Title3;
     public GameObject Title4;
-    public GameObject Buttons;
 
+    public GameObject ButtonPlay;
+    public GameObject ButtonExit;
+    public GameObject ButtonCredits;
+    public GameObject ButtonReturn;
+    public GameObject credits;
 
 
     private void Start()
@@ -30,6 +34,23 @@ public class MenuHandler : MonoBehaviour
         Application.Quit();
     }
 
+    public void Credits()
+    {
+        ButtonPlay.SetActive(false);
+        ButtonExit.SetActive(false);
+        ButtonCredits.SetActive(false);
+        ButtonReturn.SetActive(true);
+        credits.SetActive(true);
+    }
+    public void ReturnCredits()
+    {
+        ButtonPlay.SetActive(true);
+        ButtonExit.SetActive(true);
+        ButtonCredits.SetActive(true);
+        ButtonReturn.SetActive(false);
+        credits.SetActive(false);
+    }
+
     public void PlayLevel()
     {
         StartCoroutine(PlayGame());
@@ -45,19 +66,21 @@ public class MenuHandler : MonoBehaviour
     private IEnumerator MenuAnim()
     {
         yield return new WaitForSeconds(0.5f);
-        SoundManager.PlaySound("Title");
+        SoundManager.PlaySound("Title1");
         Title1.SetActive(true);
         yield return new WaitForSeconds(0.5f);
-        SoundManager.PlaySound("Title");
+        SoundManager.PlaySound("Title1");
         Title2.SetActive(true);
         yield return new WaitForSeconds(0.5f);
-        SoundManager.PlaySound("Title");
+        SoundManager.PlaySound("Title1");
         Title3.SetActive(true);
         yield return new WaitForSeconds(0.5f);
-        SoundManager.PlaySound("Title");
+        SoundManager.PlaySound("Title2");
         Title4.SetActive(true);
         yield return new WaitForSeconds(0.5f);
-        Buttons.SetActive(true);
+        ButtonPlay.SetActive(true);
+        ButtonExit.SetActive(true);
+        ButtonCredits.SetActive(true);
 
     }
 }
