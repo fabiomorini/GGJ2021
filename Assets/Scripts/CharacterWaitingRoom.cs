@@ -78,6 +78,5 @@ public class CharacterWaitingRoom : MonoBehaviour
 	public void SetBlood()
 	{
 		blood = maxBlood + 1;
-		SoundManager.PlaySound("InsertCoin");
 	}
 }
