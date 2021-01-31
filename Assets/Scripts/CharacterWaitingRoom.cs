@@ -16,10 +16,13 @@ public class CharacterWaitingRoom : MonoBehaviour
 	private float maxBlood;
 	public Slider slider;
 
+	private CharacterManager characterManager;
+
 	[HideInInspector] public UnityArmatureComponent anim;
 
 	private void Start()
 	{
+		characterManager = GameObject.FindGameObjectWithTag("CharacterManager").GetComponent<CharacterManager>();
 		maxBlood = 10.0f;
 		anim = GetComponentInChildren<UnityArmatureComponent>();
 		rb = GetComponent<Rigidbody2D>();
@@ -56,8 +59,25 @@ public class CharacterWaitingRoom : MonoBehaviour
 		}
 	}
 
+	public void BuyTirita()
+    {
+		characterManager.coins -= 10;
+		SoundManager.PlaySound("InsertCoin");
+	}
+	public void BuyCafe()
+	{
+		characterManager.coins -= 25;
+		SoundManager.PlaySound("InsertCoin");
+	}
+	public void BuyDesfibrilador()
+	{
+		characterManager.coins -= 50;
+		SoundManager.PlaySound("InsertCoin");
+	}
+
 	public void SetBlood()
 	{
 		blood = maxBlood + 1;
+		SoundManager.PlaySound("InsertCoin");
 	}
 }
