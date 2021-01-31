@@ -6,7 +6,7 @@ public class SoundManager : MonoBehaviour
 {
 
     public static AudioClip hoverMenuSound, clickMenuSound, titleSound1, titleSound2, levelendSound, bloodSound, 
-                            returnSound, playSound, ambientSound, detectionSound, insertCoin, 
+                            returnSound, playSound, ambientSound, detectionSound, insertCoin, coinSound,
                             walkingSound, healingSound, victorySound, lostSound, openVSound, closeVSound;
 
     static AudioSource audioSrc;
@@ -29,6 +29,7 @@ public class SoundManager : MonoBehaviour
         openVSound = Resources.Load<AudioClip>("OpenVending");
         closeVSound = Resources.Load<AudioClip>("ClosingVending");
         insertCoin = Resources.Load<AudioClip>("InsertCoin");
+        coinSound = Resources.Load<AudioClip>("CoinSound");
 
         audioSrc = GetComponent<AudioSource>();
     }
@@ -84,6 +85,9 @@ public class SoundManager : MonoBehaviour
                 break;
             case "InsertCoin":
                 audioSrc.PlayOneShot(insertCoin);
+                break;            
+            case "CoinSound":
+                audioSrc.PlayOneShot(coinSound);
                 break;
         }
     }

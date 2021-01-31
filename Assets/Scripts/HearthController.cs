@@ -22,12 +22,14 @@ public class HearthController : MonoBehaviour
 	public GameObject timeCounterUI;
 	public Slider slider;
 	private State state;
-	public bool blockSpeed;
-	public bool activeCoffee = false;
-	public bool activeDesfibrillator = false;
-	public bool activeBandAid = false;
+	[HideInInspector]public bool blockSpeed;
+	private bool activeCoffee = false;
+	private bool activeDesfibrillator = false;
+	private bool activeBandAid = false;
 	private bool blockLife = false;
 	private bool blockSpeedCoffee = false;
+
+	private CharacterManager characterManager;
 
 	[HideInInspector] public UnityArmatureComponent anim;
 
@@ -40,13 +42,31 @@ public class HearthController : MonoBehaviour
 
 	private void Start()
 	{
+		characterManager = GameObject.FindGameObjectWithTag("CharacterManager").GetComponent<CharacterManager>();
 		anim = GetComponentInChildren<UnityArmatureComponent>();
 		state = State.PAUSE;
 		rb = GetComponent<Rigidbody2D>();
 		slider.maxValue = maxBlood;
 		slider.value = blood;
 		anim.animation.Play(("Idle_Walk"), -1);
+		SetPowerUps();
 		SetBlood();
+	}
+
+	private void SetPowerUps()
+    {
+        if (characterManager.tirita)
+        {
+			activeBandAid = true;
+		}
+		if (characterManager.cafe)
+		{
+			activeCoffee = true;
+		}
+		if (characterManager.desfibrilador)
+		{
+			activeDesfibrillator = true;
+		}
 	}
 
 	private void FixedUpdate()
