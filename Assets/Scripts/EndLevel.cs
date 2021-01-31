@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class EndLevel : MonoBehaviour
 {
+    public AudioSource music;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -16,8 +17,10 @@ public class EndLevel : MonoBehaviour
 
     private IEnumerator Anim()
     {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<HearthController>().anim.animation.Play(("Happy_PowerUp_Finish"), 1);
-            yield return new WaitForSeconds(1f);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        music.Stop();
+        SoundManager.PlaySound("LevelEnd");
+        GameObject.FindGameObjectWithTag("Player").GetComponent<HearthController>().anim.animation.Play(("Happy_PowerUp_Finish"), 1);
+        yield return new WaitForSeconds(2.5f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

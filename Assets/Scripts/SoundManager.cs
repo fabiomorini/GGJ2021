@@ -5,8 +5,8 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
 
-    public static AudioClip hoverMenuSound, clickMenuSound, titleSound1, titleSound2, 
-                            returnSound, playSound, ambientSound, 
+    public static AudioClip hoverMenuSound, clickMenuSound, titleSound1, titleSound2, levelendSound, bloodSound, 
+                            returnSound, playSound, ambientSound, detectionSound, 
                             walkingSound, healingSound, victorySound, lostSound;
 
     static AudioSource audioSrc;
@@ -19,10 +19,13 @@ public class SoundManager : MonoBehaviour
         returnSound = Resources.Load<AudioClip>("Return");
         hoverMenuSound = Resources.Load<AudioClip>("Hover");
         ambientSound = Resources.Load<AudioClip>("Ambient");
+        levelendSound = Resources.Load<AudioClip>("LevelEnd");
         walkingSound = Resources.Load<AudioClip>("Walking");
         victorySound = Resources.Load<AudioClip>("Victory");
         lostSound = Resources.Load<AudioClip>("Lost");
         healingSound = Resources.Load<AudioClip>("Healing");
+        bloodSound = Resources.Load<AudioClip>("Blood");
+        detectionSound = Resources.Load<AudioClip>("Detection");
 
         audioSrc = GetComponent<AudioSource>();
     }
@@ -60,6 +63,15 @@ public class SoundManager : MonoBehaviour
                 break;
             case "Title2":
                 audioSrc.PlayOneShot(titleSound2);
+                break;            
+            case "LevelEnd":
+                audioSrc.PlayOneShot(levelendSound);
+                break;            
+            case "Blood":
+                audioSrc.PlayOneShot(bloodSound);
+                break;            
+            case "Detection":
+                audioSrc.PlayOneShot(detectionSound);
                 break;
         }
     }
